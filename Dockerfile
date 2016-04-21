@@ -46,7 +46,7 @@ RUN \
 WORKDIR /opt/openresty
 
 # Add files to the container.
-ADD . /opt/openresty
+ADD entrypoint /opt/openresty
 
 # Expose volumes.
 VOLUME ["/etc/nginx"]
