@@ -1,9 +1,9 @@
 version: '2'
 
 services:
-  sslresty:
-    build: .
+  oprenresty:
+    image: kraftman/openresty-docker:latest
     ports:
-     - "90:80"
+     - "80:80"
     volumes:
       - ./openresty:/opt/openresty
