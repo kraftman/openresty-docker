@@ -4,6 +4,6 @@ services:
   openresty:
     build: .
     ports:
-     - "80:80"
+     - "444:443"
     volumes:
       - ./openresty:/opt/openresty

@@ -42,6 +42,15 @@ RUN \
   ln -s /usr/local/openresty/nginx/sbin/nginx /usr/local/bin/nginx && \
   ldconfig
 
+RUN apt-get -y install luarocks libssl-dev
+RUN luarocks install lua-resty-auto-ssl
+RUN mkdir /etc/resty-auto-ssl
+
+RUN openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 \
+       -subj '/CN=sni-support-required-for-valid-ssl' \
+       -keyout /etc/ssl/resty-auto-ssl-fallback.key \
+       -out /etc/ssl/resty-auto-ssl-fallback.crt
+
 # Set the working directory.
 WORKDIR /opt/openresty/
 
