@@ -44,16 +44,17 @@ RUN \
 RUN mkdir -p /opt/openresty
 
 # Set the working directory.
-WORKDIR /opt/openresty/ #test
+WORKDIR /opt/openresty/
 
 # Add files to the container.
-COPY entrypoint /opt/openresty/
+COPY install.sh /opt/openresty/
+RUN ./install.sh
 
 # Expose volumes.
-#VOLUME ["/etc/nginx"]
+VOLUME ["/opt/openresty"]
 
 # Set the entrypoint script.
-ENTRYPOINT ["./entrypoint"]
+#ENTRYPOINT ["./entrypoint"]
 
 # Define the default command.
 CMD ["nginx", "-c", "/opt/openresty/conf/nginx.conf", "-p", "/opt/openresty"]
