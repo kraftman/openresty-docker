@@ -6,7 +6,7 @@
 # http://github.com/tenstartups/openresty-docker
 #
 
-FROM debian:jessie
+FROM ubuntu:16.04
 
 MAINTAINER Marc Lennox <marc.lennox@gmail.com>
 
@@ -42,9 +42,10 @@ RUN \
   ln -s /usr/local/openresty/nginx/sbin/nginx /usr/local/bin/nginx && \
   ldconfig
 
-RUN apt-get -y install luarocks libssl-dev
+RUN apt-get -y install luarocks
 RUN luarocks install lua-resty-auto-ssl
-RUN mkdir /etc/resty-auto-ssl
+RUN mkdir -p /etc/resty-auto-ssl/storage
+RUN chown -R nobody /etc/resty-auto-ssl
 
 RUN openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 \
        -subj '/CN=sni-support-required-for-valid-ssl' \
