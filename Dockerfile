@@ -47,6 +47,7 @@ WORKDIR /opt/openresty/
 
 # Add files to the container.
 COPY entrypoint /opt/
+COPY nginx.example.conf /opt/
 
 # Expose volumes.
 VOLUME ["/opt/openresty"]

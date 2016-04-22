@@ -9,7 +9,7 @@ if ! [ -f /opt/openresty/conf/nginx.conf ]; then
   
   cp -upR "/usr/local/openresty/nginx/conf/." "/opt/openresty/conf/"
   cp -upR "/usr/local/openresty/nginx/html/." "/opt/openresty/html/"
-  echo "daemon off;" >> "/opt/openresty/conf/nginx.conf"
+  cp -f /opt/nginx.example.conf /opt/openresty/conf/nginx.conf
 fi
 
 command="$@"
