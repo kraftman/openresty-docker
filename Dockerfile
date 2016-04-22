@@ -41,15 +41,16 @@ RUN \
   rm -rf openresty-*&& \
   ln -s /usr/local/openresty/nginx/sbin/nginx /usr/local/bin/nginx && \
   ldconfig
+RUN mkdir -p /opt/openresty
 
 # Set the working directory.
-WORKDIR /opt/openresty
+WORKDIR /opt/openresty/ #test
 
 # Add files to the container.
-ADD entrypoint /opt/openresty
+COPY entrypoint /opt/openresty/
 
 # Expose volumes.
-VOLUME ["/etc/nginx"]
+#VOLUME ["/etc/nginx"]
 
 # Set the entrypoint script.
 ENTRYPOINT ["./entrypoint"]
