@@ -44,8 +44,8 @@ RUN \
 
 RUN apt-get -y install luarocks
 RUN luarocks install lua-resty-auto-ssl
-RUN mkdir -p /etc/resty-auto-ssl/storage
-RUN chown -R nobody /etc/resty-auto-ssl
+RUN mkdir -p /etc/resty-auto-ssl/storage/file
+RUN chown -R root /etc/resty-auto-ssl
 
 RUN openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 \
        -subj '/CN=sni-support-required-for-valid-ssl' \
