@@ -2,7 +2,7 @@ version: '2'
 
 services:
   openresty:
-    image: kraftman/openresty-docker
+    build: .
     ports:
      - "80:80"
     volumes:
