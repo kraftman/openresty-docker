@@ -33,7 +33,7 @@ RUN \
   tar -xzvf openresty-*.tar.gz && \
   rm -f openresty-*.tar.gz && \
   cd openresty-* && \
-  ./configure --with-pcre-jit --with-ipv6 && \
+  ./configure --with-pcre-jit --with-ipv6 --with-debug && \
   make && \
   make install && \
   make clean && \
